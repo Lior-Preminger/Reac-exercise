@@ -17,11 +17,14 @@ const Hello:  FC<HelloProps> = ({
 };
 
 const App =() =>{
+    const userName= window.location.pathname.split('/').pop() || ''
     const basisPath ='/'
+    const user ='/user'
     return (
     <BrowserRouter>
         <Routes>
             <Route path={basisPath}  element={<Hello name={'World'}/>}/>
+            <Route path={user+basisPath+userName} element={<Hello name={userName}/>} />
        </Routes>
     </BrowserRouter>
 )
