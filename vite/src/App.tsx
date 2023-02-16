@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import './App.css'
 import {BrowserRouter, Route, Routes} from "react-router-dom";
+import SelectGate from "./selecteGate";
 
 export interface HelloProps {
   name: string;
@@ -19,12 +20,14 @@ const Hello:  FC<HelloProps> = ({
 const App =() =>{
     const userName= window.location.pathname.split('/').pop() || ''
     const basisPath ='/'
-    const user ='/user'
+    const userPath ='/user'
+    const gatePath = '/gate'
     return (
     <BrowserRouter>
         <Routes>
             <Route path={basisPath}  element={<Hello name={'World'}/>}/>
-            <Route path={user+basisPath+userName} element={<Hello name={userName}/>} />
+            <Route path={userPath+basisPath+userName} element={<Hello name={userName}/>} />
+            <Route path={gatePath} element={<SelectGate gateList={['c','cx','h','z']}/>}/>
        </Routes>
     </BrowserRouter>
 )
